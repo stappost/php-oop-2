@@ -1,15 +1,28 @@
 <?php 
+    // CLASS PRODUCT 
     class Product{
         public $name;
         public $image;
         public $available;
         public $price;
-
-        function _construt($_name, $_image, $_available, $_price){
+        // CONSTRUCT PRODUCT 
+        function __construct($_name, $_image, $_available, $_price){
             $this->name = $_name;
             $this->image = $_image;
             $this->available = $_available;
             $this->price = $_price;
+        }
+    }
+    // CLASS FOOD 
+    class Food extends Product{
+        public $weight;
+        public $ingredients;
+        // CONSTRUCT FOOD 
+        function __construct($_name, $_image, $_available, $_price, $_weight, $_ingredients){
+            parent::__construct($_name, $_image, $_available, $_price);
+            $this->weight = $_weight;
+            $this->ingredients = $_ingredients;
+
         }
     }
 ?>
