@@ -5,12 +5,14 @@
         public $image;
         public $available;
         public $price;
+        public $category;
         // CONSTRUCT PRODUCT 
-        function __construct($_name, $_image, $_available, $_price){
+        function __construct($_name, $_image, $_available, $_price, Category $_category){
             $this->name = $_name;
             $this->image = $_image;
             $this->available = $_available;
             $this->price = $_price;
+            $this->category = $_category;
         }
     }
     // CLASS FOOD 
@@ -19,8 +21,8 @@
         public $ingredients;
 
         // CONSTRUCT FOOD 
-        function __construct($_name, $_image, $_available, $_price, $_weight, $_ingredients){ 
-            parent::__construct($_name, $_image, $_available, $_price);
+        function __construct($_name, $_image, $_available, $_price, Category $_category, $_weight, $_ingredients){ 
+            parent::__construct($_name, $_image, $_available, $_price, $_category);
             $this->weight = $_weight;
             $this->ingredients = $_ingredients;
 
@@ -32,8 +34,8 @@
         public $size;
 
         // CONSTRUCT TOY 
-        function __construct($_name, $_image, $_available, $_price, $_features, $_size){
-            parent::__construct($_name, $_image, $_available, $_price);
+        function __construct($_name, $_image, $_available, $_price, Category $_category, $_features, $_size){
+            parent::__construct($_name, $_image, $_available, $_price, $_category);
             $this->features = $_features;
             $this->size = $_size;
 
@@ -45,8 +47,8 @@
         public $size;
 
         // CONSTRUCT ACCESSORY 
-        function __construct($_name, $_image, $_available, $_price, $_materials, $_size){
-            parent::__construct($_name, $_image, $_available, $_price);
+        function __construct($_name, $_image, $_available, $_price, Category $_category, $_materials, $_size){
+            parent::__construct($_name, $_image, $_available, $_price, $_category);
             $this->materials = $_materials;
             $this->size = $_size;
 
@@ -97,9 +99,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-12">
+                <h1 class="my-5 text-center">Animals Shop</h1>
+            </div>
+            <?php foreach($products as $product){ ?>
+                <div class="col-4">
+                    <div class="card h-100 p-3">
+                        <img src="<?php echo $product->image ?>" alt="<?php echo $product->name ?>" class='card-img-top'>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                            <?php echo $product->name ?>
+                            </h5>
+                            <div class="card-text">
+                                <p>
+                                    <i class="<?php echo $product->category->icon ?>"></i>
+                                    <?php echo $product->category->name ?>
+                                </p>
+                                <p>
+                                    Prezzo: <?php echo $product->price.'€' ?> 
+                                </p>
+                                <?php if(get_class($product) == 'Food'){?>
+                                    <p>
+                                        Peso: <?php echo $product->weight ?>
+                                    </p>
+                                    <p>
+                                        Ingredienti: <?php echo implode(',', $product->ingredients) ?>
+                                    </p>
+                                <?php } ?>
+                                <?php if(get_class($product) == 'Toy'){?>
+                                    <p>
+                                        Caratteristiche: <?php echo $product->features ?>
+                                    </p>
+                                    <p>
+                                        Ingredienti: <?php echo $product->size ?>
+                                    </p>
+                                <?php } ?>
+                                <?php if(get_class($product) == 'Accessory'){?>
+                                    <p>
+                                        Materiali: <?php echo $product->materials ?>
+                                    </p>
+                                    <p>
+                                        Dimensioni: <?php echo $product->size ?>
+                                    </p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
 </body>
 </html>
