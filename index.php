@@ -39,6 +39,19 @@
 
         }
     }
+     // CLASS ACCESSORY
+     class accessory extends Product{
+        public $materials;
+        public $size;
+
+        // CONSTRUCT ACCESSORY 
+        function __construct($_name, $_image, $_available, $_price, $_materials, $_size){
+            parent::__construct($_name, $_image, $_available, $_price);
+            $this->materials = $_materials;
+            $this->size = $_size;
+
+        }
+    }
 ?>
 
 <!DOCTYPE html>
