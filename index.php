@@ -40,7 +40,7 @@
         }
     }
      // CLASS ACCESSORY
-     class accessory extends Product{
+     class Accessory extends Product{
         public $materials;
         public $size;
 
@@ -49,6 +49,18 @@
             parent::__construct($_name, $_image, $_available, $_price);
             $this->materials = $_materials;
             $this->size = $_size;
+
+        }
+    }
+
+    // CLASS CATEGORY 
+    class Category{
+        public $name;
+        public $icon;
+
+        function __construct($_name, $_icon,){
+            $this->name = $_name;
+            $this->icon = $_icon;
 
         }
     }
