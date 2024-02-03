@@ -1,3 +1,19 @@
+<?php 
+    class Product{
+        public $name;
+        public $image;
+        public $available;
+        public $price;
+
+        function _construt($_name, $_image, $_available, $_price){
+            $this->name = $_name;
+            $this->image = $_image;
+            $this->available = $_available;
+            $this->price = $_price;
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
