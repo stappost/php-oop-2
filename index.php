@@ -17,11 +17,25 @@
     class Food extends Product{
         public $weight;
         public $ingredients;
+
         // CONSTRUCT FOOD 
-        function __construct($_name, $_image, $_available, $_price, $_weight, $_ingredients){
+        function __construct($_name, $_image, $_available, $_price, $_weight, $_ingredients){ 
             parent::__construct($_name, $_image, $_available, $_price);
             $this->weight = $_weight;
             $this->ingredients = $_ingredients;
+
+        }
+    }
+    // CLASS TOY 
+    class Toy extends Product{
+        public $features;
+        public $size;
+
+        // CONSTRUCT TOY 
+        function __construct($_name, $_image, $_available, $_price, $_features, $_size){
+            parent::__construct($_name, $_image, $_available, $_price);
+            $this->features = $_features;
+            $this->size = $_size;
 
         }
     }
